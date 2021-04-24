@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>es6 문법</title>
+</head>
+<body>
+  <script>
+
+    /************* 블록레벨 스코프 ****************/
+    // const, let은 var와 다르게 블록레벨 스코프를 가짐
+    // let은 재선언이 불가능
+    // const는 재할당과 재선언 불가능
+
+    /************ 템플릿 문자열 ****************/ 
+    // 백틱으로 감싸서 변수를 표현할 수 있다.
+    const a = '나';
+    const b = '국어'
+    const c = 85;
+    const d = `${a}의 ${b}점수는 ${c}점 입니다.`
+    
+    console.log(d);
+
+    /************* arrow function **************/
+    // 중괄호와 return을 생략할 수 있음
+
+    function hap1(x, y) {
+      return x + y;
+    }
+    console.log(hap1(2, 3));
+
+    const hap2 = (x, y) => x + y;
+    console.log(hap2(2, 3));
+
+
+    /************ 구조분해 할당 *****************/
+      let Humman = {
+        name: 'kim',
+        age: 40
+      }
+
+      let { name, age } = Humman;
+
+      console.log(name);
+      console.log(age);
+
+
+      const array = ['kim', 'choi', 'ahn', 'lee'];
+      const [apple, melon, banana, mango] = array;
+
+      console.log(apple); 
+      console.log(melon);	
+      console.log(banana);	
+      console.log(mango);	 
+
+    /************** Promise ******************/ 
+
+    function hap5(value) {
+      return new Promise((resolve, reject) => {
+        if(typeof value === 'number') resolve(value + value);
+        else reject('입력값은 숫자여야 합니다.');
+      });
+    }
+
+    console.log(hap5(5));
+
+    function gob(value) {
+      return new Promise((resolve, reject) => {
+        if(typeof value === 'number') resolve(value * value);
+        else reject('입력값은 숫자여야 합니다.');
+      });
+    }
+    
+    console.log(gob(6));
+  
+  /************** async/await ****************/ 
+  
+    async function final(value) {
+      try {
+        const b = await hap5(value);
+        const c = await gob(value);
+        console.log(b + c);
+      }
+      catch(e) {
+        console.log(e);
+      }
+    } 
+    final();
+
+    console.log(final(7));
+
+  </script>
+</body>
+</html>
